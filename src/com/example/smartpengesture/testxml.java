@@ -9,6 +9,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.google.common.base.CaseFormat;
+
 import android.util.Log;
 import android.widget.FrameLayout;
 
@@ -25,8 +27,13 @@ public class testxml {
      */
     public static ArrayList<Integer> test(float x,float y, int bookid,int pageid)
     {
-    	Log.e("zgm", "page:"+pageid);
-    	pagexml = "book_"+bookid+"_page_"+(pageid%20)+".xml";
+    	switch(bookid)
+    	{
+    	case 0:pagexml = "book_"+bookid+"_page_"+(pageid%20)+".xml";break;
+    	case 1:pagexml = "book_"+bookid+"_page_"+(pageid%8)+".xml";break;
+    	default:break;
+    	}
+    	
 
     	int count = 2;//计数器,页眉和组只有quyu属性，在使用其他属性时要减去模板中的页眉和组的数量
     	
